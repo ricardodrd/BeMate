@@ -1,0 +1,133 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-color: white;
+    background-image: url("https://es.bemate.com/propietarios/source/img/hero3.jpg");
+}
+
+.login-card {
+    padding: 40px;
+    width: 30%;
+    background-color: #E6E9ED;
+    margin: 10px auto 10px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.bematelogo {
+    width: 50%;
+    margin: auto;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 20px;
+}
+
+    .bematelogo img {
+        width: 100%;
+        height: auto;
+    }
+
+.login-card h4 {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Helvetica", sans-serif;
+    color: #434A54;
+}
+
+.login-card input[type=submit] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    font-family: "Helvetica", sans-serif;
+}
+
+.login-card input[type=text], input[type=password] {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    /* border-radius: 2px; */
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: "Helvetica", sans-serif;
+}
+
+    .login-card input[type=text]:hover, input[type=password]:hover {
+        border: 1px solid #b9b9b9;
+        border-top: 1px solid #a0a0a0;
+        -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+
+.login {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 200;
+    height: 45px;
+    padding: 0 8px;
+    /* border-radius: 3px; */
+    /* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.login-submit {
+    /* border: 1px solid #3079ed; */
+    font-family: "Helvetica", sans-serif;
+    text-align: center;
+    border: 0px;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #00C798;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+
+
+
+
+    .login-submit:hover {
+        /* border: 1px solid #2f5bb7; */
+        border: 0px;
+        text-shadow: 0 1px rgba(0,0,0,0.3);
+        background-color: #39E4BB;
+        cursor: pointer;
+        /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+    }
+
+.login-card a {
+    text-decoration: none;
+    color: #967ADC;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+    transition: opacity ease 0.5s;
+}
+
+    .login-card a:hover {
+        opacity: 1;
+    }
+
+.login-help {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+}

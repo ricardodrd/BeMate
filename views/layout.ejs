@@ -1,0 +1,232 @@
+﻿
+<!DOCTYPE html>
+
+
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+<link rel="stylesheet"  href="../../stylesheets/main.css"  />
+<script type="text/javascript" src="../../javascripts/BBVAtransactionparse.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap.min.js"></script>
+
+<!--
+<?php
+$connect = mysqli_connect("localhost","root","password","world");
+% query = "SELECT * FROM city WHERE Population>>6000000";
+$result = mysqli_query($connect, $query);
+?>
+
+		<?php 
+		while ($row = mysqli_fetch_array($result))
+		{
+		echo '
+		<tr>
+			<td>'.$row["ID"].'</td>
+			<td>'.$row["Name"].'</td>
+			<td>'.$row["CountryCode"].'</td>
+			<td>'.$row["District"].'</td>
+			<td>'.$row["Population"].'</td>
+			<td>'.$row["ID"].'</td>
+		';
+		}
+		?>
+-->
+<link rel="SHORTCUT ICON" href="https://d1ewohb620cza6.cloudfront.net/user_s3_avatar_256x256/avatars/000/494/144/494144-original.png?1488372590">
+<script>
+/* $(document).ready(function() {
+    var t = $('#datatable').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0			//decido que columna NO puede ordenar ni buscar
+        } ],
+        "order": [[ 2, 'asc' ]]		//decido cual empieza activada
+    } );
+
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) { //elijo en que columna meto el contador de filas
+            cell.innerHTML = i+1; //+1 si empieza a contar en 1, +2 si empieza a contar en dos, etc
+        } );
+    } ).draw();
+} ); */
+
+$(document).ready(function() {
+
+    // Setup - add a text input to each footer cell
+    //  $('#datatable tfoot th').each( function () {
+    //      var title = $(this).text();
+    //      $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    //  } );
+$.myfunction=function(){
+      table.row.add([
+        counter + '.1',
+        counter +'.2',
+              counter ,
+              counter ,
+              counter ,
+        counter
+        ]).draw(false);
+        counter++;
+    };
+    // DataTable
+  var table = $('#datatable').DataTable({
+    "order" : [[ 2, 'asc' ]],
+    "paging" :   false,
+    "searching" : true,
+    "oLanguage": {
+      "sStripClasses": "",
+      "sSearch": "",
+      "sSearchPlaceholder": "Busca aqu\u00ED...",
+},
+ "columns": [
+                 {
+                     "className": 'details-control',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": '',
+                     "render": function () {
+                         return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
+                     },
+                     width:"15px"
+                 },
+                 { "data": "Fecha Op." },
+                 { "data": "Fecha valor" },
+                 { "data": "Importe" },
+                 { "data": "Categor&iacutea" },
+				 { "data": "Referencia 1" },
+				 { "data": "Referencia 2" }
+             ],
+
+      "columnDefs": [{targets: 2,
+                    render: function ( data, type, row ) {
+                      var color = 'black';
+                      if (data.indexOf("-")==-1) {
+                        color = 'green';
+                      }
+                      else{
+                        color = 'red'
+                      }
+                      return '<span style="color:' + color + '">' + data + '</span>';
+                    }
+               }]
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+	//var t= $('#datatable').DataTable();
+	var counter = 1;
+	$('#addRow').on('click',function(){
+		table.row.add([
+			counter + '.1',
+			counter +'.2',
+            counter ,
+            counter ,
+            counter ,
+			counter
+			]).draw(false);
+	});
+
+
+    // Apply the search
+     // table.columns().every( function () {
+     //     var that = this;
+     //
+     //     $( 'input', this.footer() ).on( 'keyup change', function () {
+     //         if ( that.search() !== this.value ) {
+     //             that
+     //                 .search( this.value )
+     //                 .draw();
+     //         }
+     //     } );
+     // } );
+} );
+
+
+
+</script>
+<title>My Transactions </title>
+</head>
+<body onload="getTransaction()">
+<div class="row">
+  <div id="admin" class="col s12">
+    <div class="card material-table">
+      <div class="table-header">
+		<img class="bmicon" title="Be Mate Transactions" style="height:50px;" src="https://es.bemate.com/gestionintegral/images/platform-logos/bemate_ok.png" >
+        <span class="table-title" style="font-family: helvetica">Transactions</span>
+        <div class="actions">
+		  <a class="logout" href="/">Logout</a>
+        </div>
+      </div>
+		<table id="datatable" class="ng-cloack" style="width:100%">
+        <thead>
+            <tr>
+			<th></th>
+            <th style="color: #967ADC">Fecha Op.</th>
+            <th style="color: #967ADC">Fecha valor</th>
+            <th style="color: #967ADC">Importe</th>
+            <th style="color: #967ADC">Categor&iacutea</th>
+            <th style="color: #967ADC">Referencia 1</th>
+			      <th style="color: #967ADC">Referencia 2</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo">
+			<% for (var i =0; i < news.length; i++) {%>
+	<tr>
+		<td></td>
+		<td><%= news[i].ID %></td>
+		<td><%= news[i].Name %></td>
+		<td><%= news[i].CountryCode %></td>
+		<td><%= news[i].District %></td>
+		<td><%= news[i].Population %></td>
+		<td><%= news[i].Population %></td>
+
+	</tr>
+	<% }%>
+        </tbody>
+    </table>
+	</div>
+  </div>
+</div>
+<button  id="addRow">ADDROW</button>
+<button  id="ad" onclick="hfunction()">TIMEOUT</button>
+<!--
+<div class= "row">
+	<div class="col-md-6 mt-4 text-center">
+	<table class= "table table-striped">
+	<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>Country Code</th>
+	<th>District</th>
+	<th>Population</th>
+	</tr>
+	<% for (var i =0; i < news.length; i++) {%>
+	<tr>
+		<td><%= news[i].ID %></td>
+		<td><%= news[i].Name %></td>
+		<td><%= news[i].CountryCode %></td>
+		<td><%= news[i].District %></td>
+		<td><%= news[i].Population %></td>
+	</tr>
+	<% }%>
+
+
+	</table>
+	</div>
+
+</div>
+-->
+</body>
+</html>
